@@ -8,8 +8,8 @@ RUN corepack enable pnpm
 FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
-# Remove the lockfile and reinstall
-RUN rm -f pnpm-lock.yaml && pnpm install
+# Install dependencies and approve build scripts
+RUN pnpm install --ignore-scripts
 
 # Build the application
 FROM base AS builder
