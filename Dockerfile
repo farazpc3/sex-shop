@@ -14,6 +14,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
+COPY nextjs-prisma/prisma ./prisma
 COPY . .
 
 # Prisma client generation
